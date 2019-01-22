@@ -15,6 +15,7 @@ let models = {
     ClassModel: BaseModel.keys({}),
     SubjectModel: BaseModel.keys({}),
     BookModel: BaseModel.keys({}),
+    RootModel: BaseModel.keys({}),
 }
 
 module.exports = models;

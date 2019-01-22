@@ -21,7 +21,10 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
-var socket = require('../socket');
+/**
+ * Attach socket.
+ */
+var socket = require('../config/socket');
 var io = socket.io;
 io.attach(server);
 
@@ -36,6 +39,7 @@ server.on('listening', onListening);
 /**
  * Normalize a port into a number, string, or false.
  */
+
 
 function normalizePort(val) {
   var port = parseInt(val, 10);
@@ -85,10 +89,12 @@ function onError(error) {
  * Event listener for HTTP server "listening" event.
  */
 
+var startup = require('../api/startup'); 
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+  startup.createRootNode(server);
 }

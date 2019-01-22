@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var socket = require('../socket');
-var io = socket.io;
-var neo4jSession = require('../neo4j');
+//var socket = require('../config/socket');
+//var io = socket.io;
+var neo4jSession = require('../config/neo4j');
 
 
 /* GET home page. */
@@ -27,10 +27,11 @@ router.get('/', function (req, res, next) {
 module.exports = router;
 
 
-
+/*
 io.on('connection', function (socket) {
   console.log('a user connected');
   socket.on('disconnect', function () {
     console.log('user disconnected');
   });
 });
+*/
