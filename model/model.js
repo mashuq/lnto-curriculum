@@ -7,7 +7,7 @@ let BaseModel = Joi.object().keys({
 });
 
 let models = {
-    AreaModel: BaseModel.keys({}),
+    RealmModel: BaseModel.keys({}),
     InstituteModel: BaseModel.keys({}),
     MediumModel: BaseModel.keys({}),
     ProgramModel: BaseModel.keys({}),

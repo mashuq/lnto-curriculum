@@ -1,15 +1,15 @@
-var neo4jSession = require('../config/neo4j');
+var neo4j = require('../config/neo4j');
 const rootUUID = "19257b55-210b-46ea-aea3-87f24d2faf60";
 const root = "Root";
 var app = require('express')();
 
 
 let getNode = function(){
-    return neo4jSession.run('Match (root:Root {uuid : $uuid}) RETURN root', { uuid: rootUUID });;
+    return neo4j.run('Match (root:Root {uuid : $uuid}) RETURN root', { uuid: rootUUID });
 }
 
 let createNode = function(){
-    return neo4jSession.run('Create (root:Root {uuid : $uuid, name : $name, acive:$active}) RETURN root', 
+    return neo4j.run('Create (root:Root {uuid : $uuid, name : $name, acive:$active}) RETURN root', 
     { uuid: rootUUID, name: root, active : true });
 }
 
@@ -25,7 +25,7 @@ let createRootNode = function(server){
             if(result.records.length == 0){
                 return createNode();
             }else{
-                return rootNodeExists();
+                return rootNodeExists(); 
             }
         }, 
         error =>{
