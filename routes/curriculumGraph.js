@@ -15,7 +15,7 @@ io.on('connection', function (socket) {
     api.invoke(data).then(
       result=> {
         data.result = result;        
-        socket.emit("invoke", data);
+        io.emit("invoke", data);
       },
       error => {console.log(error)}
     );
